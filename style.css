@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #23252c;
+}
+
+.main {
+  display: flex;
+}
+
+.container {
+  background-color: #1a1b21;
+  flex: 1;
+  width: 400px;
+  margin: 30px auto;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.nav a {
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: none;
+  background-color: rgb(94, 69, 134);
+  padding: 5px;
+  width: max-content;
+}
+
+.tag-styling {
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.15rem;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ux-color {
+  background-color: pink;
+}
+.ui-color {
+  background-color: red;
+}
+.research-color {
+  background-color: green;
+}
+.management-color {
+  background-color: yellow;
+}
+
+.avatar {
+  display: flex;
+  background-image: url(./images/avatar.png);
+  background-color: grey;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.listItem {
+  background-color: lightgrey;
+  color: black;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
+
+.footer {
+  background-color: #161619;
+  font-size: 10px;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.footer-icon {
+  width: 25px;
+  height: auto;
+  margin: 0 10px;
+}
+
+.sidebar {
+  background-color: lightgrey;
+  width: 400px;
+  margin: 30px auto;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 20px;
+}
+
+.title {
+  color: black;
+  font-weight: 700;
+}
+
+.sidebar ul {
+  display: block;
+  margin: auto;
+  padding: 0;
+}
+.sidebar li {
+  display: flex;
+  background-color: lightgray;
+  border: solid 1px black;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-size: 12px;
+  text-decoration: none;
+  width: 100%;
+  height: 5rem;
+  border-radius: 0.5rem;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 1rem;
+}

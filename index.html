@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="index.pack.js"></script>
+</body>
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+
+  const userName = (user) => {
+    return "Sepidah HajiYousefi"
+  };
+  const user = {
+    firstname: "Sepidah",
+    lastname: "HajiYousefi",
+  };
+
+  const AvatarComponent = (props) => {
+    return (
+      <div className="avatar"
+      // style={{
+      //   height: "3rem",
+      //   width: "3rem",
+      //   backgroundColor: "Lightgrey",
+      //   borderRadius: "50%",
+      //   display: "flex",
+      //   justifyContent: "center",
+      //   alignItems: "center",
+      // }}
+      >
+      {props.initial ? props.initials : ""}
+        </div>
+    )
+  }
+
+  const TaskListItem = (props) => {
+
+    let dynamicColors = "";
+    if (props.itemType === "UX Design") {
+      dynamicColors = "ux-color";
+    } else if (props.itemType === "UI Design") {
+      dynamicColors = "ui-color";
+    } else if (props.itemType === "Research") {
+      dynamicColors = "research-color";
+    } else if (props.itemType === "Management") {
+      dynamicColors = "management-color";
+    }
+    return (<div className="listItem"
+      // style = {{
+      //   backgroundColor:"lightgrey",
+      //   width:"20rem",
+      //   height:"3rem",
+      //   borderRadius:"0.5rem",
+      //   display:"flex",
+      //   flexDirection:"row",
+      //   justifyContent:"space-between",
+      //   alignItems:"center",
+      //   margin:"1rem 1rem",
+      //   padding:"0.5rem"
+      //  }}
+       >
+      <p>{props.taskItem}</p>
+      <span className={"tag-styling" + dynamicColors}
+      style = {{
+        margin:"0.5rem 0.5rem",
+        padding:"0.5rem",
+        borderRadius:"0.15rem",
+        backgroundColor:"pink",
+        fontSize:"10px",
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center",
+      }}
+      >{props.itemType}</span>
+
+    </div>);
+  };
+
+
+  const NavigationBar = () => {
+    return (<div className="nav"
+    // style = {{
+    //     display:"flex",
+    //     justifyContent: "center",
+    //     alignItems:"center",
+    //    }}
+    >
+        <a href="/">Dashboard</a>
+        <a href="/">My Tasks</a>
+        <a href="/">Notification</a>
+        <a href="/">Settings</a>
+      </div>)
+  }
+
+  const SideBar = () => {
+    return (<div className="sidebar">
+<p className="title">Recent Activities</p>
+<ul>
+  <li>Pitch deck upload to Sharepoint</li>
+  <li>Agenda sent out</li>
+  <li>high-fidelity wireframes</li>
+  <li>moodboard alternatives created</li>
+  <li>meeting with client</li>
+  </ul>
+      </div>)
+
+  }
+
+
+  const FooterBar = () => {
+    return (<div className="footer">
+            <p>&copy; 2023 SEPIDAH | All rights reserved</p>
+      </div>)
+  }
+
+  root.render (
+    <React.Fragment>
+      <div className="main">
+      <div className="container">
+        <AvatarComponent initials={"SH"} />
+        <NavigationBar />
+
+        <TaskListItem taskItem={"Create low-fidelity wireframes"} itemType={"UX design"}/>
+        <TaskListItem taskItem={"Create Mockups"} itemType={"UI design"}/>
+        <TaskListItem taskItem={"Research Target Audience"} itemType={"Research"}/>
+        <TaskListItem taskItem={"Follow up with Client"} itemType={"Management"}/>
+        <TaskListItem taskItem={"Send Pitch deck"} itemType={"Management"}/>
+
+        <FooterBar />
+      </div>
+      <SideBar />
+      </div>
+    </React.Fragment>
+  );
+
+</script>
+
+</html>
