@@ -1,0 +1,36 @@
+.task-list {
+  width: auto;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.list {
+  background-color: lightgrey;
+  color: black;
+  width: auto;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.list-type {
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.15rem;
+  background-color: pink;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}

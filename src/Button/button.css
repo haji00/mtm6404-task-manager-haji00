@@ -1,0 +1,10 @@
+.custom-button {
+  background-color: azure;
+  color: black;
+  border-color: pink;
+}
+
+.button-disabled {
+  background-color: rgb(44, 44, 44);
+  color: black;
+}
