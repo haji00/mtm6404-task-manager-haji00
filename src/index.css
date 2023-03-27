@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #bdbdbd;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,10 +18,10 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
 }
 a:hover {
-  background-color: pink;
+  color: rgb(108, 150, 255);
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -42,13 +42,14 @@ button {
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: border-color 0.25s;
 }
