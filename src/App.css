@@ -5,9 +5,10 @@
   text-align: center;
 }
 
-.App {
+.main-container {
   background-color: #ffffff;
   width: 500px;
+  height: 800px;
   margin: 1rem auto;
   padding: 20px;
 }
@@ -57,6 +58,11 @@
   font-size: 12px;
   margin: 0 5px;
   height: 35px;
+}
+
+.header1 {
+  color: black;
+  font-size: 2rem;
 }
 
 .show-completed {

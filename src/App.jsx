@@ -1,10 +1,12 @@
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { useState } from "react";
-import { NavBar } from "./NavBar/NavBar";
+import { NavBar } from "./components/NavBar";
 import { tasks } from "./assets/tasks";
-import ListItem from "./ListItem/ListItem";
-import Footer from "./Footer/Footer";
+import ListItem from "./components/ListItem";
+import Footer from "./components/Footer";
+import { listContext } from "./context/listContext";
+import { collection, addDoc } from "firebase/firestore";
+import db from "./db";
 
 function App() {
   const [user, setUser] = useState();
@@ -12,12 +14,22 @@ function App() {
   const [newItemTask, setNewItemTask] = useState("");
   const [newItemPriority, setNewItemPriority] = useState("High");
   const [showCompleted, setShowCompleted] = useState(true);
+  const [task, setTodo] = useState("");
+
+  const addTodo = async (ev) => {
+    ev.preventDefault();
+    const tasksCollection = collection(db, "groceries");
+    const document = await addDoc(tasksCollection, {
+      task: task,
+    });
+    console.log(document.id);
+  };
 
   const addItemToList = () => {
-    setTaskList([
-      ...taskList,
+    setTaskList((prevTaskList) => [
+      ...prevTaskList,
       {
-        id: taskList.length,
+        id: prevTaskList.length + 1,
         taskItem: newItemTask,
         priority: newItemPriority,
         status: "Incomplete",
@@ -26,7 +38,7 @@ function App() {
   };
 
   const figureoutStatus = (id) => {
-    const itemStatus = taskList[id].status;
+    const itemStatus = taskList[id]?.status;
     if (itemStatus === "Completed") {
       return "Incomplete";
     }
@@ -38,12 +50,13 @@ function App() {
   };
 
   const handleChange = (id) => {
-    const [...taskListCopy] = taskList;
-    console.log("Id", id);
-    console.log("status", taskList[id].status);
-    taskListCopy[id].status = figureoutStatus(id);
-    setTaskList(taskListCopy);
-    saveMyChange();
+    const taskIndex = taskList.findIndex((task) => task.id === id);
+    if (taskIndex !== -1) {
+      const taskListCopy = [...taskList];
+      taskListCopy[taskIndex].status = figureoutStatus(taskIndex);
+      setTaskList(taskListCopy);
+      saveMyChange();
+    }
   };
 
   const handleDelete = (id) => {
@@ -54,78 +67,81 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <NavBar />
-      <div className="form">
-        <button
-          className="add-btn"
-          onClick={addItemToList}
-          disabled={!newItemTask}
-        >
-          Add Item
-        </button>
-        <input
-          value={newItemTask}
-          onChange={(event) => {
-            setNewItemTask(event.target.value);
-          }}
-        />
-        <select
-          onChange={(ev) => {
-            setNewItemPriority(ev.target.value);
-          }}
-        >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-        </select>
-      </div>
+    <listContext.Provider value="list">
+      <div className="main-container">
+        <NavBar />
+        <div className="form">
+          <button
+            className="add-btn"
+            onClick={addItemToList}
+            disabled={!newItemTask}
+          >
+            Add List
+          </button>
+          <input
+            value={newItemTask}
+            onChange={(event) => {
+              setNewItemTask(event.target.value);
+            }}
+          />
+          <select
+            onChange={(ev) => {
+              setNewItemPriority(ev.target.value);
+            }}
+          >
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
 
-      <div className="show-completed">
-        <label>Show All Tasks</label>
-        <input
-          id="showCompleted"
-          type="checkbox"
-          checked={showCompleted}
-          onChange={() => setShowCompleted(!showCompleted)}
-        />
-      </div>
+        <div className="show-completed">
+          <label>Show All Lists</label>
+          <input
+            id="showCompleted"
+            type="checkbox"
+            checked={showCompleted}
+            onChange={() => setShowCompleted(!showCompleted)}
+          />
+        </div>
 
-      <ul className="task-list">
-        {taskList
-          .sort((a, b) => {
-            if (a.priority === "High") {
-              return -1;
-            } else if (a.priority === "Low") {
-              return 1;
-            } else if (a.priority === "Medium") {
-              return 0;
-            }
-          })
-          .map((task) =>
-            task.status !== "Completed" ? (
-              <ListItem
-                key={task.id}
-                task={task}
-                isCompleted={false}
-                onToggleStatus={() => handleChange(task.id - 1)}
-                onDeleteTask={() => handleDelete(task.id)}
-              />
-            ) : (
-              showCompleted && (
+        <ul className="task-list">
+          {taskList
+            .sort((a, b) => {
+              if (a.priority === "High") {
+                return -1;
+              } else if (a.priority === "Low") {
+                return 1;
+              } else if (a.priority === "Medium") {
+                return 0;
+              }
+            })
+            .map((task) =>
+              task.status !== "Completed" ? (
                 <ListItem
                   key={task.id}
                   task={task}
-                  isCompleted={true}
-                  onToggleStatus={() => handleChange(task.id - 1)}
+                  isCompleted={false}
+                  onToggleStatus={() => handleChange(task.id)}
                   onDeleteTask={() => handleDelete(task.id)}
                 />
+              ) : (
+                showCompleted && (
+                  <ListItem
+                    key={task.id}
+                    task={task}
+                    isCompleted={true}
+                    onToggleStatus={() => handleChange(task.id)}
+                    onDeleteTask={() => handleDelete(task.id)}
+                  />
+                )
               )
-            )
-          )}
-      </ul>
-      <Footer />
-    </div>
+            )}
+        </ul>
+
+        <Footer />
+      </div>
+    </listContext.Provider>
   );
 }
 

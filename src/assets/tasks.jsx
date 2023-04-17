@@ -1,32 +1,20 @@
 export const tasks = [
   {
     id: 1,
-    taskItem: "Create low-fidelity wireframes",
+    taskItem: "work",
     priority: "High",
     status: "Completed",
   },
   {
     id: 2,
-    taskItem: "Create Mockups",
+    taskItem: "groceries",
     priority: "Medium",
     status: "Completed",
   },
   {
     id: 3,
-    taskItem: "Research Target Audience",
+    taskItem: "home",
     priority: "Medium",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    taskItem: "Follow up with Client",
-    priority: "Low",
-    status: "Incomplete",
-  },
-  {
-    id: 5,
-    taskItem: "Send Pitch deck",
-    priority: "Low",
     status: "Completed",
   },
 ];

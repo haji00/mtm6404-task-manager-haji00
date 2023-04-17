@@ -1,4 +1,5 @@
 import "./listItem.css";
+import { Link } from "react-router-dom";
 
 const ListItem = ({ task, onToggleStatus, onDeleteTask }) => {
   const handleStatusToggle = () => {
@@ -9,10 +10,14 @@ const ListItem = ({ task, onToggleStatus, onDeleteTask }) => {
     onDeleteTask(task.id);
   };
 
+  const taskItem = () => {};
+
   return (
     <div className="container">
       <li className="list">
-        <p className="list-item">{task.taskItem}</p>
+        <p className="list-item">
+          <Link to={`/list/${task.taskItem}`}>{task.taskItem}</Link>
+        </p>
         <p className="list-type">{task.priority}</p>
       </li>
       <div className="buttons">
