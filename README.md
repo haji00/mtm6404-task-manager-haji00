@@ -4,7 +4,7 @@
 
 **Student Number:** 041025672
 
-**Run these commands before running the server:
-``npm audit fix
-``npm fund
-``npm run dev
+**Run these commands before running the server:**
+``npm audit fix``
+``npm fund``
+``npm run dev``
