@@ -51,7 +51,7 @@ const Tasks = () => {
 
     let objHolder = JSON.parse(localStorage.getItem("task"));
 
-    updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder });
+    updateDoc(doc(db, "tasks", "task"), { 'task': objHolder });
 
     isConnected = true;
 
@@ -70,7 +70,7 @@ const Tasks = () => {
 
   //   let objHolder = JSON.parse(localStorage.getItem("task"));
 
-  //   updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder });
+  //   updateDoc(doc(db, "tasks", "task"), { 'task': objHolder });
   // }
   
 

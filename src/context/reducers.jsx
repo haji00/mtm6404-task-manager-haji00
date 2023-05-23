@@ -12,7 +12,7 @@ export const tasksReducer = (state, action) => {
 
       let objHolder_add_task = JSON.parse(JSON.stringify(new_tasks));
 
-      updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_add_task });
+      updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_add_task });
 
       return {
         ...state, tasks: new_tasks 
@@ -33,7 +33,7 @@ export const tasksReducer = (state, action) => {
 
           let objHolder_add_duty = JSON.parse(JSON.stringify(addDutyTasks));
 
-          updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_add_duty });
+          updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_add_duty });
 
           return {
             ...state, tasks: addDutyTasks 
@@ -48,7 +48,7 @@ export const tasksReducer = (state, action) => {
 
       let objHolder_delete_task = JSON.parse(JSON.stringify(renew_tasks));
 
-      updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_delete_task });
+      updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_delete_task });
 
       return {
         ...state, tasks: renew_tasks
@@ -74,7 +74,7 @@ export const tasksReducer = (state, action) => {
 
       let objHolder_delete_duty = JSON.parse(JSON.stringify(dutyRenew_tasks));
 
-      updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_delete_duty });
+      updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_delete_duty });
 
       return {
         ...state, tasks: dutyRenew_tasks
@@ -99,7 +99,7 @@ export const tasksReducer = (state, action) => {
 
                   let objHolder_toggle_duty_status = JSON.parse(JSON.stringify(dutyToggle_Renew_tasks));
 
-                  updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_toggle_duty_status });
+                  updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_toggle_duty_status });
 
                   return {
                     ...state, tasks: dutyToggle_Renew_tasks
@@ -113,7 +113,7 @@ export const tasksReducer = (state, action) => {
 
                   let objHolder_toggle_duty_status = JSON.parse(JSON.stringify(dutyToggle_Renew_tasks));
 
-                  updateDoc(doc(db, "tasks", "zqB9k7pocmcH4Us3xNt1"), { 'task': objHolder_toggle_duty_status });
+                  updateDoc(doc(db, "tasks", "task"), { 'task': objHolder_toggle_duty_status });
 
                   return {
                     ...state, tasks: dutyToggle_Renew_tasks
